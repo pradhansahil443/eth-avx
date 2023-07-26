@@ -1,41 +1,68 @@
-# Project Title
+# Error handling
 
-Simple overview of use/purpose.
+In this project we get quick overview of solidity Error Handling. 
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+This project aims to develop a smart contract that implements the require(), assert(), and revert() statements. Error handling is crucial in smart contract development to ensure proper validation and handling of unexpected scenarios. By incorporating these statements, the smart contract will be able to handle various error conditions effectively and securely
 
 ## Getting Started
 
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+To access the smart contract project, just copy the below code in your bash terminal of you gitpod or visual code.
+```
+git clone https://github.com/pradhansahil443/eth-avx.git
+```
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
+Ensure you have a development environment set up with an Ethereum-compatible blockchain and a compatible wallet like MetaMask.
+
+    Compile the smart contract using your preferred Solidity compiler.
+    Deploy the compiled contract to your local or testnet Ethereum network.
+    Interact with the contract using the appropriate function calls.
+    
+For example, you can interact with the smart contract using web3.js or ethers.js library and your Ethereum wallet.
+
 ```
-code blocks for commands
+pragma solidity 0.8.0;
+
+contract ExceptionHandling {
+    uint public value;
+
+    function requireExample(uint _value) external {
+        require(_value > value, "New value must be greater than the current value");
+        value = _value;
+    }
+
+    function assertExample() external view {
+        uint x = 10;
+        uint y = 2;
+
+        assert(x >= y);
+    }
+
+    function revertExample(uint _newvalue) external {
+        if (_newvalue == 42) {
+            revert("New value cannot be 42");
+        }
+        value = _newvalue;
+    }
+}
+
 ```
 
 ## Help
 
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+If you encounter any issues while using the smart contract, refer to the following resources for assistance:
+
+    1. Check the project's documentation for comprehensive guidance on error handling practices and smart contract usage.
+    2. If you have specific error messages or issues, search for them on the project's issue tracker or forums to see if others have encountered and resolved similar problems.
+
+For more urgent or critical problems, you can reach out to the project maintainers or contributors for personalized support.
 
 ## Authors
 
-Contributors names and contact info
+This project is contributed by: Sahil Pradhan
 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
-
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
