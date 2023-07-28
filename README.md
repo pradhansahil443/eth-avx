@@ -26,28 +26,21 @@ Ensure you have a development environment set up with an Ethereum-compatible blo
 For example, you can interact with the smart contract using web3.js or ethers.js library and your Ethereum wallet.
 
 ```
-pragma solidity 0.8.0;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.10;
 
-contract ExceptionHandling {
-    uint public value;
+contract DivideContract{
+    function divide(uint a, uint b) external pure returns(uint){
+        require( b!= 0, "Cannot divided by 0");
 
-    function requireExample(uint _value) external {
-        require(_value > value, "New value must be greater than the current value");
-        value = _value;
+        uint result = a/b;
+
+        assert(a == b * result + (a%b));    
+
+        return result;
     }
-
-    function assertExample() external view {
-        uint x = 10;
-        uint y = 2;
-
-        assert(x >= y);
-    }
-
-    function revertExample(uint _newvalue) external {
-        if (_newvalue == 42) {
-            revert("New value cannot be 42");
-        }
-        value = _newvalue;
+    function trigger() external{
+        revert("this function trigger revert");
     }
 }
 
